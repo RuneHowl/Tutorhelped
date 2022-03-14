@@ -1,0 +1,95 @@
+#include <iostream>
+
+
+using namespace std;
+
+const int MONTHS = 12; 
+
+void getData(int [] [2], int);
+int averageHigh(int [] [2], int);
+int averageLow(int [] [2], int);
+int indexHighTemp(int [] [2], int);
+int indexLowTemp(int [] [2], int);
+
+
+int main() {
+    // Write your main here
+    
+    int temps[MONTHS] [2];
+    int indexHigh;
+    int indexLow;
+    
+    getData(temps, MONTHS);
+    
+  
+    cout << "Average high temperature: " << averageHigh(temps, MONTHS) << endl;
+    cout << "Average low temperature: " << averageLow(temps, MONTHS) << endl;
+    
+    indexHigh = indexHighTemp(temps, MONTHS);
+    cout << "Highest temperature: " << temps[indexHigh][0] << endl;
+    indexLow = indexLowTemp(temps, MONTHS);
+    cout << "Lowest temperature: " << temps[indexLow][1] << endl;
+    return 0;
+}
+
+void getData(int y [] [2], int z)
+       { for(int i = 0; i < z; i++){
+            cout << "Enter high temperature for each month" << endl;
+            cin >> y [i] [0];
+       }
+            for(int i = 0; i < z; i++){
+            cout << "Enter low temperature for each month" << endl;
+            cin >> y [i] [1];
+        }
+        
+       } 
+ int averageHigh(int y [] [2], int z)
+{
+    int sum = 0;
+    
+    for(int i = 0; i < z; i++){
+    sum+= y [i][0];
+    }
+    
+    return(sum/z);
+}
+
+ int averageLow(int y [] [2], int z)
+{
+    int sum = 0;
+    
+    for(int i = 0; i < z; i++){
+    sum+= y [i][1];
+    }
+    
+return (sum/z);
+}
+
+int indexHighTemp(int y [] [2], int z)
+{
+    int highest = 0;
+    
+    for(int i = 1; i < z; i++){
+        if(y[highest][0] < y[i][0])
+        {
+            highest = i;
+        }
+}
+        return highest;
+    
+}
+
+int indexLowTemp(int y [] [2], int z)
+{
+    int lowest = 0;
+    
+    for(int i = 0; i < z; i++){
+        if(y[lowest][1] > y[i][1])
+        {
+            lowest = i;
+        }
+    }
+        return lowest;
+    
+        
+}
